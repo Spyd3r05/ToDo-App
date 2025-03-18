@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#root{
+    max-width: 360px;
+    width: 100%;
+}
+/* General styles for the entire app */
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: #000; 
+    color: #fff; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    border-radius: 10px;
+    box-shadow: 0 0 10px white;
+    max-width: 330px;
+    width: 100%;
+    padding: 10px;
+    margin: 10px auto 0;
+}
+h2{
+    text-align: center;
+    font-size: 24px;
+    margin: 10px;
+    background: transparent;
+}
+
+/* Container styling */
+.todo-container {
+    width: 98%;
+    background-color: #000; /* Slightly lighter black for contrast */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); /* White glow effect */
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Input field styling */
+
+.task-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 99%;
+    background: #000;
+    box-shadow: 0 0 5px white;
+    border-radius: 10px;
+    padding: 10px;
+    padding-right: 0;
+    height: 40px;
+    margin: 20px auto;
+}
+input[type="text"] {
+    flex: 1;
+    border: none;
+    border-radius: 5px;
+    background-color:transparent;
+    color: #fff;
+    outline: none;
+    font-size: 16px;
+}
+
+.add-task{
+    height: inherit;
+    float: right;
+}
+
+/* Button styling */
+button {
+    background-color: #444; /* Dark gray for subtle contrast */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    }
+
+button:hover {
+    background-color: #666; /* Slightly lighter for hover effect */
+}
+
+/* Individual task item */
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+    font-size: 16px;
+    margin: 10px;
+}
+
+/* Task text */
+.todo-text {
+    color: #ddd;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+/* Edit input field */
+/* .todo-item input[type="text"] {
+    width: auto;
+    flex-grow: 1;
+} */
+
+
+
+/* Edit & Delete button */
+.edit-btn, .delete-btn, .save-btn {
+    background-color: transparent;
+    border: 1px solid #fff;
+    padding: 5px 8px;
+    margin-left: 5px;
+}
+
+.edit-btn:hover, .delete-btn:hover, .save-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
