@@ -1,21 +1,19 @@
-import React from "react";
-import TaskList from "./components/TaskList";
-import { TaskProvider } from "./Context/TaskContext";
-import TaskForm from "./components/TaskForm";
-import './index.css'
-
+import React from 'react'
+import TaskInput from './components/TaskInput'
+import Tasks from './components/Tasks'
+import { TaskProvider } from './context/TaskContext'
 
 const App = () => {
-  // Debugging log
-  console.log("App is rendering..."); 
-
   return (
-    <TaskProvider>
-      <h2>HI SHYNYN,</h2>
-      <TaskForm />
-      <TaskList />
+    <TaskProvider classname="task-container" >
+    <h2>HI SHYNYN,</h2>
+    <TaskInput />
+    <Tasks />
+      
     </TaskProvider>
-  );
-};
+    
 
-export default App;
+  )
+}
+
+export default App

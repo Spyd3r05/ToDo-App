@@ -1,51 +1,38 @@
-import { createContext, useReducer, useContext } from "react";
+import { useContext } from "react";
+import { createContext, useReducer } from "react";
 
-// Create the context
-const TaskContext = createContext({ tasks: [], dispatch: () => {} });
+// create the context
 
-// Define the reducer function
-const taskReducer = (state, action) => {
-  switch (action.type) {
-    case "ADD_TASK":
-      return [...state, { id: Date.now(), text: action.payload, isEditing: false, isCompleted: false }];
+const TaskContext = createContext({tasks: [], dispatch : ()=>{}})
 
-    case "TOGGLE_COMPLETE":
-      return state.map(task =>
-        task.id === action.payload ? { ...task, isCompleted: !task.isCompleted } : task
-      );
+// define the reducer function
+function taskReducer(state, action){
+    switch (action.type) {
+        case "ADD_TASK":
+            return [...state, {id : Date.now, task: action.payload}];
+        
+    
+        default:
+            return state;
+    }
 
-      case "EDIT_TASK":
-        return state.map(task =>
-          task.id === action.payload
-            ? { ...task, isEditing: true }
-            : { ...task, isEditing: false } // Reset others
-        );
-      
-    case "UPDATE_TASK":
-      return state.map(task =>
-        task.id === action.payload.id
-          ? { ...task, text: action.payload.text, isEditing: false }
-          : task
-      );
+}
 
-    case "DELETE_TASK":
-      return state.filter(task => task.id !== action.payload);
+// create the provider component
 
-    default:
-      return state;
-  }
-};
+export const TaskProvider = ({children}) =>{
+    const [tasks, dispatch] = useReducer(taskReducer, []);
 
-// Create the provider component
-export const TaskProvider = ({ children }) => {
-  const [tasks, dispatch] = useReducer(taskReducer, []);
+    return (
+        <TaskContext.Provider value={{tasks,dispatch}} >
+            {children}
 
-  return (
-    <TaskContext.Provider value={{ tasks, dispatch }}>
-      {children}
-    </TaskContext.Provider>
-  );
-};
+        </TaskContext.Provider>
+    )
 
-// Custom hook to use the context
-export const useTaskContext = () => useContext(TaskContext);
+}
+
+
+// create a custom hook to use the context
+ // eslint-disable-next-line react-refresh/only-export-components
+ export const useTaskContext = ()=> useContext(TaskContext);
