@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import "./TaskInput.css"
 import { useTaskContext } from '../context/TaskContext';
 const TaskInput = () => {
 
@@ -20,10 +19,10 @@ const addTasks = ()=>{
 }
 
   return (
-    <div className="task-input">
-        <input type="text"  className='input text-[16px] text-white' placeholder="What're You Gonna Do Today Asshole?" value={taskText} onChange={(e) => setTaskText(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && addTasks()} />
-        <button onClick={addTasks}>ADD</button>
-
+    <div className="w-[95%] flex items-center justify-center h-10 bg-[#333] shadow-sm shadow-whitesmoke my-5 mx-auto rounded-[10px] px-8">
+        <input type="text"  className="text-left mx-2.5 flex-1 h-auto border-none outline-none bg-transparent text-white text-[16px] placeholder:text-white placeholder:text-[12px]"
+ placeholder="What're You Gonna Do Today Asshole?" value={taskText} onChange={(e) => setTaskText(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && addTasks()} />
+        <button className='px-4 py-2 rounded-[5px] self-end border-none outline-none cursor-pointer bg-black text-white shadow-sm shadow-white w-[40px] h-[40px] ms-1' onClick={addTasks}>ADD</button>
     </div>
   )
 }

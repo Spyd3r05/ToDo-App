@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './Tasks.css'
 import { useTaskContext } from '../context/TaskContext'
 import unchecked from "../assets/unchecked.png"
 import delete_icon from "../assets/delete.png"
@@ -21,28 +20,28 @@ if(!tasks){
   
 }
   return (
-    <div className='tasks'>
+    <div className='w-[98%] mt-6 mx-auto resize-y flex items-start flex-col justify-start mt-[20px] gap-1'>
       {tasks.length === 0 && <p>No Tasks Available</p>}
       {tasks.map((task) => (
         task && (
-          <div key={task.id} className='task-item'>
+          <div key={task.id} className='h-[50px] w-full p-2.5 rounded-[10px] bg-[#333] text-white flex justify-start items-center my-[5px] flex-wrap gap-2.5'>
             <span onClick={(e) => {
               e.stopPropagation(); // Prevent event propagation
               dispatch({ type: 'TOGGLE_COMPLETE', payload: task.id });
             }}>
-              <img src={task.isComplete ? checked : unchecked} alt="" />
+              <img src={task.isComplete ? checked : unchecked} alt="toggle_complete" className='cursor-pointer w-[20px] h-[20px]' />
             </span>
 
             {task.isEditing ? (
               <>
                 <input
-                  className='editTask'
+                  className='outline-none border-none flex-1 p-2 text-base bg-transparent text-white'
                   type="text"
                   value={editTask[task.id] || ""}
                   onChange={(e) => setEditTask({ ...editTask, [task.id]: e.target.value })}
                 />
                 <button
-                  className='save'
+                  className='bg-black text-white cursor-pointer w-10 h-7 border-none outline-none rounded-[5px] shadow-sm shadow-white m-0.5 justify-self-end'
                   onClick={(e) => {
                     e.stopPropagation(); // Prevent event propagation
                     dispatch({ type: "SAVE_EDIT", payload: { id: task.id, task: editTask[task.id] || task.task } });
@@ -55,7 +54,7 @@ if(!tasks){
             ) : (
               <>
                 <span
-                  className='task-text'
+                  className='ml-[3px] flex-1 justify-self-start cursor-pointer'
                   style={{
                     textDecoration: task.isComplete ? "line-through 3px black" : "none",
                     color: task.isComplete ? "grey" : 'white'
@@ -64,7 +63,7 @@ if(!tasks){
                   {task.task}
                 </span>
                 <button
-                  className='edit'
+                  className='bg-black text-white cursor-pointer w-10 h-7 border-none outline-none rounded-[5px] shadow-sm shadow-white m-1 justify-self-end'
                   style={{ display: task.isComplete ? "none" : "inline-block" }}
                   onClick={(e) => {
                     e.stopPropagation(); // Prevent event propagation
@@ -74,11 +73,11 @@ if(!tasks){
                 >
                   EDIT
                 </button>
-                <button onClick={(e) => {
+                <button className='bg-white text-black cursor-pointer w-10 h-7 border-none outline-none rounded-[5px] shadow-sm shadow-white m-0.5 justify-self-end' onClick={(e) => {
                   e.stopPropagation(); // Prevent event propagation
                   task?.id && dispatch({ type: "DELETE_TASK", payload: task.id });
                 }}>
-                  <img src={delete_icon} alt="" />
+                  <img src={delete_icon} alt="delete_icon" className='cursor-pointer w-[20px] h-[20px]' />
                 </button>
               </>
             )}
