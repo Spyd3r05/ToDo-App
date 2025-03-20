@@ -6,7 +6,7 @@ import { TaskProvider } from './context/TaskContext'
 const App = () => {
   return (
     <TaskProvider classname="task-container" >
-    <h2>HI SHYNYN,</h2>
+    <h2 className='text-2xl'>HI AGNES,</h2>
     <TaskInput />
     <Tasks />
       
