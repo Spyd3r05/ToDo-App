@@ -54,7 +54,7 @@ if(!tasks){
             ) : (
               <>
                 <span
-                  className='ml-[3px] flex-1 justify-self-start cursor-pointer'
+                  className='ml-[3px] flex-1 justify-self-start cursor-pointer text-[14px] text-white'
                   style={{
                     textDecoration: task.isComplete ? "line-through 3px black" : "none",
                     color: task.isComplete ? "grey" : 'white'
@@ -73,12 +73,17 @@ if(!tasks){
                 >
                   EDIT
                 </button>
-                <button className='bg-white text-black cursor-pointer w-10 h-7 border-none outline-none rounded-[5px] shadow-sm shadow-white m-0.5 justify-self-end' onClick={(e) => {
+              <button
+                className='flex justify-center items-center bg-gray-400 text-black cursor-pointer w-auto h-7 border-none outline-none rounded-[5px] shadow-sm shadow-white m-0.5 justify-self-end'
+                onClick={(e) => {
                   e.stopPropagation(); // Prevent event propagation
-                  task?.id && dispatch({ type: "DELETE_TASK", payload: task.id });
-                }}>
-                  <img src={delete_icon} alt="delete_icon" className='cursor-pointer w-[20px] h-[20px]' />
-                </button>
+                  if (confirm("Are you sure you want to delete this task?")) {
+                    task?.id && dispatch({ type: "DELETE_TASK", payload: task.id });
+                  }
+                }}
+              >
+                <img src={delete_icon} alt="delete_icon" className='cursor-pointer w-[20px] h-[20px]' />
+              </button>
               </>
             )}
           </div>
