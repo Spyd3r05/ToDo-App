@@ -20,11 +20,11 @@ if(!tasks){
   
 }
   return (
-    <div className='w-[98%] mt-6 mx-auto resize-y flex items-start flex-col justify-start mt-[20px] gap-1'>
+    <div className='w-[98%] mt-6 mx-auto resize-y flex items-start flex-col justify-start gap-1'>
       {tasks.length === 0 && <p>No Tasks Available</p>}
       {tasks.map((task) => (
         task && (
-          <div key={task.id} className='h-[50px] w-full p-2.5 rounded-[10px] bg-[#333] text-white flex justify-start items-center my-[5px] flex-wrap gap-2.5'>
+          <div key={task.id} className='h-auto w-full p-2.5 rounded-[10px] bg-[#333] text-white flex justify-start items-center my-[5px] flex-wrap gap-2.5'>
             <span onClick={(e) => {
               e.stopPropagation(); // Prevent event propagation
               dispatch({ type: 'TOGGLE_COMPLETE', payload: task.id });
