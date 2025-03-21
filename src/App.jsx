@@ -6,7 +6,7 @@ import { TaskProvider } from './context/TaskContext'
 const App = () => {
   return (
     <TaskProvider className="task-container" >
-    <h2 className='my-[20px] text-[32px] underline underline-offset-8 text-fuchsia-300 divide-rose-100'>Hello,</h2>
+    <h2 className='my-[20px] text-[32px] underline underline-offset-8 text-fuchsia-300'>Hello,</h2>
     <TaskInput />
     <Tasks />
       
